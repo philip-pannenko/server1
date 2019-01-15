@@ -1,0 +1,1 @@
+INSERT INTO messages(message) VALUES ('Have a great day');
