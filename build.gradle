@@ -19,9 +19,10 @@ bootJar {
 
 repositories {
     mavenLocal()
-    maven {
-        url "http://localhost:8081/artifactory/jcenter"
-    }
+    mavenCentral()
+    //maven {
+    //    url "http://localhost:8081/artifactory/jcenter"
+    //}
 }
 
 sourceCompatibility = 1.8
