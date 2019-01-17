@@ -34,10 +34,10 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile('org.springframework.cloud:spring-cloud-starter-config')
     compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('net.pannenko.cicd:server-utils:1.0.0')
     liquibaseRuntime 'org.liquibase:liquibase-core:3.6.1'
     liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:2.0.1'
     liquibaseRuntime 'org.postgresql:postgresql:42.2.5'
-    compile group: 'net.pannenko.cicd', name: 'server-utils', version: '1.0.0'
     compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -106,4 +106,3 @@ liquibase {
         }
     }
 }
-
