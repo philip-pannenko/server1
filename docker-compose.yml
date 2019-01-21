@@ -1,14 +1,36 @@
 version: '3'
 services:
-  server:
-    image: aistated/net.pannenko.cicd.server1
+  client:
+    image: aistated/net.pannenko.cicd.client1
+    container_name: client1
     environment:
-      VIRTUAL_HOST: $VIRTUAL_HOST
+      VIRTUAL_HOST: ${COMPOSE_PROJECT_NAME}.localhost
     networks:
-      - ops_ops-network
-      - ops_server-proxy-network
+      default:
+        aliases:
+          - client
+      ops_infra-network:
+      ops_client-proxy-network:
+      ops_env-network:
+  server1:
+    image: aistated/net.pannenko.cicd.server1
+    container_name: server1
+    environment:
+      VIRTUAL_HOST: ${COMPOSE_PROJECT_NAME}.localhost
+    networks:
+      default:
+        aliases:
+          - server1
+      ops_infra-network:
+      ops_server-proxy-network:
+      ops_env-network:
 networks:
-  ops_ops-network:
+  ops_env-network:
+    external:
+      name: ops_${ENV}-network
+  ops_infra-network:
+    external: true
+  ops_client-proxy-network:
     external: true
   ops_server-proxy-network:
     external: true
