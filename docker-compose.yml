@@ -9,7 +9,7 @@ services:
     networks:
       default:
         aliases:
-          - client
+          - ${COMPOSE_PROJECT_NAME}-client1
       ops_infra-network:
       ops_client-proxy-network:
       ops_env-network:
@@ -18,12 +18,12 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}-server1
     environment:
       VIRTUAL_HOST: ${COMPOSE_PROJECT_NAME}.localhost
-      SPRING_PROFILES_ACTIVE: ${COMPOSE_PROJECT_NAME}
-      SPRING_APPLICATION_JSON: '{"spring": {"cloud": {"config": {"label":"${COMPOSE_PROJECT_NAME}"}}}}'
+      SPRING_PROFILES_ACTIVE: ${COMPOSE_PROJECT_NAME}, default
+      SPRING_APPLICATION_JSON: '{"spring": {"cloud": {"config": {"label":"${COMPOSE_PROJECT_NAME}, master"}}}}'
     networks:
       default:
         aliases:
-          - server1
+          - ${COMPOSE_PROJECT_NAME}-server1
       ops_infra-network:
       ops_server-proxy-network:
       ops_env-network:
