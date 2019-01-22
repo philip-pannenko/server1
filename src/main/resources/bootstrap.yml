@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: application
+  cloud:
+    enabled: true
+    config:
+      uri: http://cloud-config:8888
+      failFast: true
+      retry:
+        maxAttempts: 20

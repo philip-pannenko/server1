@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+        hibernate:
+          jdbc:
+            lob:
+              non_contextual_creation: true
+          #default_schema: test
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://db:5432/postgres
+    username: postgres
+    password: root
+  main:
+    allow-bean-definition-overriding: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

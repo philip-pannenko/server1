@@ -2,8 +2,9 @@ version: '3'
 services:
   client:
     image: aistated/net.pannenko.cicd.client1
-    container_name: client1
+    container_name: ${COMPOSE_PROJECT_NAME}-client1
     environment:
+      COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME}
       VIRTUAL_HOST: ${COMPOSE_PROJECT_NAME}.localhost
     networks:
       default:
@@ -14,9 +15,11 @@ services:
       ops_env-network:
   server1:
     image: aistated/net.pannenko.cicd.server1
-    container_name: server1
+    container_name: ${COMPOSE_PROJECT_NAME}-server1
     environment:
       VIRTUAL_HOST: ${COMPOSE_PROJECT_NAME}.localhost
+      SPRING_PROFILES_ACTIVE: ${COMPOSE_PROJECT_NAME}
+      SPRING_APPLICATION_JSON: '{"spring": {"cloud": {"config": {"label":"${COMPOSE_PROJECT_NAME}"}}}}'
     networks:
       default:
         aliases:
